@@ -24,12 +24,12 @@ Dans ce tutoriel, nous allons nous intérresser aux librairies ViewModel et Live
 
 ![Itération dans une application](https://miro.medium.com/max/1400/1*I9WPcnpGNuI4CjxxrkP0-g.png)
 
-* Le **ViewModel** est une classe qui gère les données d'un composant d'interface utilisateur spécifique, tel qu'un fragment ou une activité, et contient la logique métier permettant de gérer la communication avec le reste de l'application (Exemple : appéler les classes de logiques métier).
+* Le **ViewModel** est une classe qui gère les données d'un composant d'interface utilisateur spécifique, tel qu'un fragment ou une activité, et contient la logique métier permettant de gérer la communication avec le reste de l'application (Exemple : appeler les classes de logiques métier).
 Le ViewModel ne connaît pas les composants de l'interface utilisateur, il n'est donc pas affecté par les modifications de configuration, telles que la recréation d'une activité lors de la rotation de l'appareil.
 
 * **LiveData** est un observeur qui est utilisé pour notifier la vue en cas de changement des données observées.
   
-  Cette classe contient deux méthodes interressante : `setValue(T value)` et `postValue(T value)`
+  Cette classe contient deux méthodes interressantes : `setValue(T value)` et `postValue(T value)`
   - `setValue` permet de mettre à jour et de notifier notre objet observé. C'est une méthode qui ne peut être utilisé que dans un thread principal. 
   - `postValue` publie une tâche dans un thread principal pour définir la valeur donnée.
 
@@ -52,8 +52,8 @@ Ci-dessous le résultat du projet que nous allons réaliser dans ce tutoriel.
 
 
 Dans le projet nous avons 2 fragments : **ProfileFragment** et **BiographyFragment**
-- `ProfileFragment` contient 2 champs texte permettant de renseigner son nom et prénoms.
-- `BiographyFragment` affiche le nom et prénoms renseignés dans `ProfileFragment` et donne la possibilité de mettre à jour la biographie de l'utilisateur en renseignant le champ biographie.
+- `ProfileFragment` contient 2 champs texte permettant de renseigner ses noms et prénoms.
+- `BiographyFragment` affiche les noms et prénoms renseignés dans `ProfileFragment` et donne la possibilité de mettre à jour la biographie de l'utilisateur en renseignant le champ biographie.
 Le bouton "Mettre à jour" mette la biographie à jour dans les 2 fragments.
 
 L'idée est de montrer que les deux fragments partagent la même source de données (l'objet profil).
@@ -61,7 +61,7 @@ Et que cette source reste disponible, même après rotation du téléphone.
 
 ## Étape 1 : Ajouter les dépendances au projet
 
-Ajouter les dépendances ci-dessous dans le fichier `build.gradle` du dossier `app`
+Ajouter les dépendances ci-dessous dans le fichier `build.gradle` situé dans le dossier `app`
 
 ```gradle
 // build.gradle (Module: app)
@@ -147,7 +147,7 @@ public class ProfileViewModel extends ViewModel {
 }
 ```
 
-> Euh, c'est quoi un `MutableLiveData` ?
+> Euh 🤯, c'est quoi un `MutableLiveData` ?
 
 Un `MutableLiveData` [(docs)](https://developer.android.com/reference/androidx/lifecycle/MutableLiveData?hl=en) est une classe qui hérite de la classe `LiveData` et qui expose publiquement les méthodes `setValue(T value)` et `postValue(T value)` qui sont `protected` dans `LiveData`
 
@@ -262,10 +262,12 @@ public class BiographyFragment extends Fragment {
 * Le ViewModel est conçue pour gérer et concerver les données liées à l'interface utilisateur indépendament du cycle de vie des composants (activité / fragment). C'est un excellent moyen de créer des applications Android robustes, testables et maintenables. 
   - Le ViewModel suivie durant tout le cycle de vie d'une activité / fragment.
   - Plusieurs UI components peuvent partager le même ViewModel.
-  - **Il ne faut jamais utiliser de contexte dans un ViewModel**
+  - Il ne faut jamais utiliser de contexte dans un ViewModel (pour respecter le patron de conception)
 * Les LiveData permettent d'observer les modificiations des modèles au sein de notre ViewModel.
 
-**Retrouvez le code source du projet sur GitHub : [Lien code source](https://github.com/willf80)**
+**Retrouvez le code source du projet sur GitHub : [Lien code source](https://github.com/willf80/viewmodel-livedata-example)**
+
+**Version itérative du cours : [Genially](https://view.genial.ly/5efdce79edf12d0d65fb1b2d/presentation-viewmodel-et-livedata-comprendre-le-fonctionnement)**
 
 ## Sources
 
