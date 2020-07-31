@@ -267,7 +267,7 @@ public class BiographyFragment extends Fragment {
 
 **Retrouvez le code source du projet sur GitHub : [Lien code source](https://github.com/willf80/viewmodel-livedata-example)**
 
-**Version itérative du cours : [Genially](https://view.genial.ly/5efdce79edf12d0d65fb1b2d/presentation-viewmodel-et-livedata-comprendre-le-fonctionnement)**
+**Version interactive du cours : [Genially](https://view.genial.ly/5efdce79edf12d0d65fb1b2d/presentation-viewmodel-et-livedata-comprendre-le-fonctionnement)**
 
 ## Sources
 
